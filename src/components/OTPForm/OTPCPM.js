@@ -67,7 +67,7 @@ const OTPCPN = (props) => {
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
-            marginBottom: (screenH * 15) / 100,
+            marginBottom: (screenH * 10) / 100,
           }}
         >
           <StyledTextInput
@@ -144,8 +144,8 @@ const OTPCPN = (props) => {
             }}
           />
         </View>
-        <View style={{ marginVertical: 10, alignItems: "center" }}>
-          <View style={{ marginBottom: (screenH * 3) / 100 }}>
+        <View style={{ alignItems: "center" }}>
+          <View style={{ marginBottom: (screenH * 2) / 100 }}>
             <StyledText
               text={"หากคุณไม่ได้รับรหัส?"}
               style={{ color: activeColors.sub }}

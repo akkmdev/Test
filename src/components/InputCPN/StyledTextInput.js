@@ -27,7 +27,7 @@ export default (props) => {
         editable={true}
         style={{
           color: props.color,
-          fontSize: 25,
+          fontSize: 40,
           fontFamily: "DB Heavent",
         }}
         value={props.value}

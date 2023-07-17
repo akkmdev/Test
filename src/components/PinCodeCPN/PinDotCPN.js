@@ -20,12 +20,12 @@ export default (props) => {
           <View
             key={"PinDotCPN" + (i + 1)}
             style={{
-              marginLeft: i === 0 ? 0 : 10,
+              marginLeft: i === 0 ? 0 : 15,
             }}
           >
             <FontAwesomeIcons
               name={props.pin.length < i + 1 ? "circle-thin" : "circle"}
-              size={16}
+              size={20}
               color={activeColors.secondary}
             />
           </View>

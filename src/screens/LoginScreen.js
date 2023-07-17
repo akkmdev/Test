@@ -72,7 +72,7 @@ const LoginScreen = ({ route, navigation }) => {
                 justifyContent: "space-between",
               }}
             >
-              <View style={{ flexDirection: "row" }}>
+              <View style={{ flexDirection: "row",alignItems:'center' }}>
                 <TouchableOpacity
                   onPress={() => {}}
                   style={{
