@@ -12,6 +12,8 @@ target 'Testcodediva' do
     :hermes_enabled => false
   )
 
+  pod 'TouchID', :path => '../node_modules/react-native-touch-id'
+
   target 'TestcodedivaTests' do
     inherit! :complete
     # Pods for testing
