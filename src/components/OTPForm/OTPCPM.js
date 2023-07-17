@@ -1,19 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {
-  Modal,
   View,
-  Text,
   TouchableOpacity,
   Dimensions,
-  ActivityIndicator,
   StyleSheet,
-  Animated,
-  Easing,
-  Image,
-  TextInput,
   TouchableWithoutFeedback,
-  Keyboard,
-  Platform,
 } from "react-native";
 import StyledTextInput from "../InputCPN/StyledTextInput";
 import StyledText from "../TextCPN/StyledText";
@@ -25,7 +16,7 @@ const screenW = Dimensions.get("screen").width;
 const screenH = Dimensions.get("screen").height;
 
 const OTPCPN = (props) => {
-  const { theme, updateTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
   const [counter, setCounter] = useState(60);
   const [reotp, setResotp] = useState(false);
@@ -71,8 +62,7 @@ const OTPCPN = (props) => {
           }}
         >
           <StyledTextInput
-            style={{
-            }}
+            style={{}}
             color={activeColors.tint}
             value={pin1}
             maxLength={1}

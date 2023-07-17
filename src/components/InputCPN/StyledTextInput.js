@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, View, Platform,Dimensions } from "react-native";
+import { TextInput, View, Platform, Dimensions } from "react-native";
 import { colors } from "../../config/theme";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
@@ -8,7 +8,7 @@ const screenW = Dimensions.get("screen").width;
 const screenH = Dimensions.get("screen").height;
 
 export default (props) => {
-  const { theme, updateTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
 
   return props.OTP ? (

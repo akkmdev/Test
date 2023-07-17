@@ -1,22 +1,14 @@
-import React, { useState } from "react";
-import {
-  View,
-  TouchableOpacity,
-  Dimensions,
-  Text,
-  Pressable,
-} from "react-native";
-
-const screenW = Dimensions.get("screen").width;
-const screenH = Dimensions.get("screen").height;
+import React from "react";
+import { View, Dimensions, Text, Pressable } from "react-native";
 import { colors } from "../../config/theme";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
-
-const sizButtone = (screenH * 10) / 100;
+const screenW = Dimensions.get("screen").width;
+const screenH = Dimensions.get("screen").height;
+const sizeButton = (screenH * 10) / 100;
 
 export default (props) => {
-  const { theme, updateTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
   return (
     <Pressable
@@ -26,9 +18,9 @@ export default (props) => {
       style={({ pressed }) => [
         {
           backgroundColor: pressed ? activeColors.secondary : "transparent",
-          width: sizButtone,
-          height: sizButtone,
-          borderRadius: sizButtone / 2,
+          width: sizeButton,
+          height: sizeButton,
+          borderRadius: sizeButton / 2,
           borderColor: activeColors.accent,
           borderWidth: 1,
           justifyContent: "center",

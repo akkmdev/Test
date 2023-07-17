@@ -1,11 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  BackHandler,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
+import React, { useEffect } from "react";
+import { View, Dimensions, TouchableOpacity } from "react-native";
 import TouchID from "react-native-touch-id";
 import IconMaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { colors } from "../../config/theme";
@@ -14,22 +8,22 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 
 const screenH = Dimensions.get("screen").height;
 
-const sizButtone = (screenH * 10) / 100;
+const sizeButton = (screenH * 10) / 100;
 
 const Components_Touch_ID = (props) => {
-  const { theme, updateTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
 
   const optionalConfigObject = {
-    title: "Authentication Required", // Android
-    imageColor: "#e00606", // Android
-    imageErrorColor: "#ff0000", // Android
-    sensorDescription: "Touch sensor", // Android
-    sensorErrorDescription: "Failed", // Android
-    cancelText: "Cancel", // Android
-    fallbackLabel: "Show Passcode", // iOS (if empty, then label is hidden)
-    unifiedErrors: false, // use unified error messages (default false)
-    passcodeFallback: true, // iOS - allows the device to fall back to using the passcode, if faceid/touch is not available. this does not mean that if touchid/faceid fails the first few times it will revert to passcode, rather that if the former are not enrolled, then it will use the passcode.
+    title: "Authentication Required",
+    imageColor: "#e00606",
+    imageErrorColor: "#ff0000",
+    sensorDescription: "Touch sensor",
+    sensorErrorDescription: "Failed",
+    cancelText: "Cancel",
+    fallbackLabel: "Show Passcode",
+    unifiedErrors: false,
+    passcodeFallback: true,
   };
 
   const CheckPermissionTouchID = () => {
@@ -38,11 +32,9 @@ const Components_Touch_ID = (props) => {
       optionalConfigObject
     )
       .then((success) => {
-        // Success code
         console.log("success", success);
       })
       .catch((error) => {
-        // Failure code
         console.log("error", error);
       });
   };
@@ -57,9 +49,9 @@ const Components_Touch_ID = (props) => {
     return (
       <View
         style={{
-          width: sizButtone,
-          height: sizButtone,
-          borderRadius: sizButtone / 2,
+          width: sizeButton,
+          height: sizeButton,
+          borderRadius: sizeButton / 2,
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -69,9 +61,9 @@ const Components_Touch_ID = (props) => {
     return (
       <View
         style={{
-          width: sizButtone,
-          height: sizButtone,
-          borderRadius: sizButtone / 2,
+          width: sizeButton,
+          height: sizeButton,
+          borderRadius: sizeButton / 2,
           justifyContent: "center",
           alignItems: "center",
         }}

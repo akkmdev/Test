@@ -1,17 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   View,
   StyleSheet,
-  Text,
-  Image,
   TouchableOpacity,
   Dimensions,
-  Linking,
   SafeAreaView,
-  Platform,
-  useColorScheme,
-  Switch,
 } from "react-native";
 
 import { colors } from "../config/theme";
@@ -19,22 +13,22 @@ import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 import StyledText from "../components/TextCPN/StyledText";
 import StyledBTN from "../components/ButtonCPN/StyledBTN";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import StyledTextInput from "../components/InputCPN/StyledTextInput";
 
 const screenW = Dimensions.get("screen").width;
 const screenH = Dimensions.get("screen").height;
 
 const LoginScreen = ({ route, navigation }) => {
-  const insets = useSafeAreaInsets();
-  const statusBarHeight = insets.bottom;
-  const { theme, updateTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   return (
     <SafeAreaView
-      style={[styles.cssSafeAreaView, { backgroundColor: activeColors.primary }]}
+      style={[
+        styles.cssSafeAreaView,
+        { backgroundColor: activeColors.primary },
+      ]}
     >
       <View style={styles.cssContaniner}>
         <View style={styles.cssContent}>
@@ -72,7 +66,7 @@ const LoginScreen = ({ route, navigation }) => {
                 justifyContent: "space-between",
               }}
             >
-              <View style={{ flexDirection: "row",alignItems:'center' }}>
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <TouchableOpacity
                   onPress={() => {}}
                   style={{
@@ -117,7 +111,11 @@ const LoginScreen = ({ route, navigation }) => {
             }}
           >
             <View
-              style={{ borderTopWidth: 1, borderColor: activeColors.accent, flex: 1 }}
+              style={{
+                borderTopWidth: 1,
+                borderColor: activeColors.accent,
+                flex: 1,
+              }}
             />
             <View
               style={{
@@ -132,7 +130,11 @@ const LoginScreen = ({ route, navigation }) => {
               />
             </View>
             <View
-              style={{ borderTopWidth: 1, borderColor: activeColors.accent, flex: 1 }}
+              style={{
+                borderTopWidth: 1,
+                borderColor: activeColors.accent,
+                flex: 1,
+              }}
             />
           </View>
           <StyledBTN

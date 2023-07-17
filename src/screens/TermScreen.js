@@ -1,17 +1,9 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import {
   View,
   StyleSheet,
-  Text,
-  Image,
-  TouchableOpacity,
   Dimensions,
-  Linking,
-  SafeAreaView,
   Platform,
-  useColorScheme,
-  Switch,
   StatusBar,
 } from "react-native";
 
@@ -20,7 +12,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 import StyledText from "../components/TextCPN/StyledText";
 import StyledBTN from "../components/ButtonCPN/StyledBTN";
-import IconMaterialIcons from "react-native-vector-icons/MaterialIcons";
+import IconAntDesign from "react-native-vector-icons/AntDesign";
 import Components_Topbar from "../components/TopbarCPN/Components_Topbar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -30,10 +22,8 @@ const screenH = Dimensions.get("screen").height;
 const TermScreen = ({ route, navigation }) => {
   const insets = useSafeAreaInsets();
   const statusBarHeight = insets.top;
-  const { theme, updateTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
-  console.log("statusBarHeight: ", StatusBar.currentHeight);
-  console.log("screenH", screenH);
   let androidStatusBarH = StatusBar.currentHeight;
   return (
     <View
@@ -51,32 +41,26 @@ const TermScreen = ({ route, navigation }) => {
       <Components_Topbar navigation={navigation} />
       <View style={{ flex: 1, justifyContent: "flex-end" }}>
         <View
-          style={{
-            width: screenW,
-            height:
-              Platform.OS == "android"
-                ? ((screenH + androidStatusBarH) * 70) / 100
-                : (screenH * 70) / 100,
-            backgroundColor: activeColors.tertiary,
-            borderTopRightRadius: 20,
-            borderTopLeftRadius: 20,
-            shadowColor: "#888",
-            shadowOffset: {
-              width: 0,
-              height: -1,
+          style={[
+            styles.cssCard,
+            {
+              width: screenW,
+              height:
+                Platform.OS == "android"
+                  ? ((screenH + androidStatusBarH) * 70) / 100
+                  : (screenH * 70) / 100,
+              backgroundColor: activeColors.tertiary,
+              paddingBottom:
+                Platform.OS == "android" ? androidStatusBarH : statusBarHeight,
             },
-            shadowOpacity: 0.3,
-            shadowRadius: 2.0,
-            elevation: 5,
-            paddingBottom: Platform.OS == "android"? androidStatusBarH: statusBarHeight,
-          }}
+          ]}
         >
           <View style={styles.cssContaniner}>
             <View style={styles.cssContent}>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ marginRight: (screenW * 3) / 100 }}>
-                  <IconMaterialIcons
-                    name={"list-alt"}
+                  <IconAntDesign
+                    name={"profile"}
                     style={{ fontSize: 30, color: activeColors.secondary }}
                   />
                 </View>
@@ -112,7 +96,15 @@ const TermScreen = ({ route, navigation }) => {
                 />
                 <StyledBTN
                   onPress={() => {
-                    navigation.navigate("LoginScreen", route);
+                    navigation.reset({
+                      index: 0,
+                      routes: [
+                        {
+                          name: "LoginScreen",
+                          params: route.params,
+                        },
+                      ],
+                    });
                   }}
                   navigation={navigation}
                   route={route}
@@ -139,6 +131,18 @@ const styles = StyleSheet.create({
   cssContent: {
     flex: 1,
     marginTop: (screenH * 3) / 100,
+  },
+  cssCard: {
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
+    shadowColor: "#888",
+    shadowOffset: {
+      width: 0,
+      height: -1,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 2.0,
+    elevation: 5,
   },
 });
 export default TermScreen;

@@ -1,18 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  Image,
-  TouchableOpacity,
-  Dimensions,
-  Linking,
-  SafeAreaView,
-  Platform,
-  useColorScheme,
-  Switch,
-} from "react-native";
+import { View, StyleSheet, Dimensions, SafeAreaView } from "react-native";
 
 import { colors } from "../config/theme";
 import { useContext } from "react";
@@ -24,7 +11,7 @@ const screenW = Dimensions.get("screen").width;
 const screenH = Dimensions.get("screen").height;
 
 const SelectlanguageScreen = ({ route, navigation }) => {
-  const { theme, updateTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
   return (
     <SafeAreaView
@@ -46,11 +33,9 @@ const SelectlanguageScreen = ({ route, navigation }) => {
             type={"mediam"}
           />
 
-          <View style={{ marginTop: (screenH * 15) / 100 }}>
+          <View style={styles.cssBtnContent}>
             <StyledBTN
-              onPress={() => {
-                
-              }}
+              onPress={() => {}}
               navigation={navigation}
               route={route}
               text={"English"}
@@ -84,6 +69,9 @@ const styles = StyleSheet.create({
   cssContent: {
     flex: 1,
     justifyContent: "center",
+  },
+  cssBtnContent: {
+    marginTop: (screenH * 15) / 100,
   },
 });
 export default SelectlanguageScreen;

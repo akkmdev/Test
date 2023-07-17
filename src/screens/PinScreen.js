@@ -5,7 +5,6 @@ import StyledText from "../components/TextCPN/StyledText";
 import { colors } from "../config/theme";
 import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
-import { storeData, getData } from "../../src/config/asyncStorage";
 const screenW = Dimensions.get("screen").width;
 const screenH = Dimensions.get("screen").height;
 
@@ -17,23 +16,26 @@ const PinScreen = ({ route, navigation }) => {
   let activeColors = colors[theme.mode];
   const [themeAccive, setThemeAccive] = useState("UNABLE");
 
-  useEffect(() => {
-    console.log("themeAccive",themeAccive);
+  const onChangeTheme = () => {
     if (themeAccive == true) {
       updateTheme({ mode: "light" });
-      console.log("DARK",themeAccive);
+      console.log("DARK", themeAccive);
     } else if (themeAccive == false) {
-      console.log("theme",theme.mode);
+      console.log("theme", theme.mode);
       updateTheme({ mode: "dark" });
-      console.log("LIGHT",themeAccive);
+      console.log("LIGHT", themeAccive);
     } else {
       console.log("ElsePIN");
-      if(theme.mode == "light"){
+      if (theme.mode == "light") {
         setThemeAccive(true);
-      }else{
+      } else {
         setThemeAccive(false);
       }
     }
+  };
+
+  useEffect(() => {
+    onChangeTheme();
   }, [themeAccive]);
 
   useEffect(() => {
@@ -41,6 +43,7 @@ const PinScreen = ({ route, navigation }) => {
       setState(2);
     }
   }, []);
+
   return (
     <SafeAreaView
       style={{

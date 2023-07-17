@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 
 export default (props) => {
-  const { theme, updateTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
   return (
     <View

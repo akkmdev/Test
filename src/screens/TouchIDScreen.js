@@ -1,17 +1,10 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import {
   View,
   StyleSheet,
-  Text,
-  Image,
   TouchableOpacity,
   Dimensions,
-  Linking,
   SafeAreaView,
-  Platform,
-  useColorScheme,
-  Switch,
 } from "react-native";
 
 import { colors } from "../config/theme";
@@ -25,21 +18,21 @@ const screenW = Dimensions.get("screen").width;
 const screenH = Dimensions.get("screen").height;
 
 const TouchIDScreen = ({ route, navigation }) => {
-  const { theme, updateTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
-  const [isActive, setIsActive] = useState(theme.mode === "dark");
-  const handleSwitch = () => {
-    updateTheme();
-    setIsActive((previousState) => !previousState);
-  };
   return (
-    <SafeAreaView style={[styles.cssSafeAreaView,{backgroundColor:activeColors.primary}]}>
+    <SafeAreaView
+      style={[
+        styles.cssSafeAreaView,
+        { backgroundColor: activeColors.primary },
+      ]}
+    >
       <View style={styles.cssContaniner}>
         <View style={styles.cssContent}>
           <View style={{ marginBottom: (screenH * 3) / 100 }}>
             <StyledText
               text={"Touch ID"}
-              style={{ color: activeColors.tint, }}
+              style={{ color: activeColors.tint }}
               type={"large"}
             />
           </View>
