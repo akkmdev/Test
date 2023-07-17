@@ -1,0 +1,14 @@
+com/testcodediva/ReactNativeFlipper.java
+ com.testcodediva.ReactNativeFlipper
+ com.testcodediva.ReactNativeFlipper$1
+ com.testcodediva.ReactNativeFlipper$2
+ com.testcodediva.ReactNativeFlipper$2$1
+com/testcodediva/MainActivity.java
+ com.testcodediva.MainActivity
+com/testcodediva/BuildConfig.java
+ com.testcodediva.BuildConfig
+com/testcodediva/MainApplication.java
+ com.testcodediva.MainApplication
+ com.testcodediva.MainApplication$1
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
