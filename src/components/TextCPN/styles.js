@@ -3,12 +3,12 @@ import { StyleSheet} from "react-native";
 export const styles = (textstyle) =>
   StyleSheet.create({
     large: {
-      fontSize: 20,...textstyle
+      fontSize: 30,fontFamily: "DB Heavent Bold",...textstyle
     },
     mediam: {
-      fontSize: 16,...textstyle
+      fontSize: 26,fontFamily: "DB Heavent",...textstyle
     },
     small: {
-      fontSize: 14,...textstyle
+      fontSize: 24,fontFamily: "DB Heavent",...textstyle
     },
   });

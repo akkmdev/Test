@@ -20,13 +20,19 @@ const PinScreen = ({ route, navigation }) => {
   useEffect(() => {
     console.log("themeAccive",themeAccive);
     if (themeAccive == true) {
-      updateTheme({ mode: "dark" });
+      updateTheme({ mode: "light" });
       console.log("DARK",themeAccive);
     } else if (themeAccive == false) {
-      updateTheme({ mode: "light" });
+      console.log("theme",theme.mode);
+      updateTheme({ mode: "dark" });
       console.log("LIGHT",themeAccive);
     } else {
       console.log("ElsePIN");
+      if(theme.mode == "light"){
+        setThemeAccive(true);
+      }else{
+        setThemeAccive(false);
+      }
     }
   }, [themeAccive]);
 

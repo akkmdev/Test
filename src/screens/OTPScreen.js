@@ -60,7 +60,7 @@ const OTPScreen = ({ route, navigation }) => {
           <View style={{ marginBottom: (screenH * 2) / 100 }}>
             <StyledText
               text={"ยืนยันตัวตน"}
-              style={{ color: activeColors.tint,fontWeight:"bold" }}
+              style={{ color: activeColors.tint}}
               type={"large"}
             />
           </View>

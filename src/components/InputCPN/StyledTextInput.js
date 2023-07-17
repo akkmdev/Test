@@ -1,8 +1,11 @@
 import React from "react";
-import { TextInput, View } from "react-native";
+import { TextInput, View, Platform,Dimensions } from "react-native";
 import { colors } from "../../config/theme";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+
+const screenW = Dimensions.get("screen").width;
+const screenH = Dimensions.get("screen").height;
 
 export default (props) => {
   const { theme, updateTheme } = useContext(ThemeContext);
@@ -15,6 +18,8 @@ export default (props) => {
         borderColor: activeColors.accent,
         alignItems: "center",
         justifyContent: "center",
+        width: (screenW * 10) / 100,
+        height: Platform.OS == "android" ? null : (screenH * 5) / 100,
         ...props.style,
       }}
     >
@@ -23,6 +28,7 @@ export default (props) => {
         style={{
           color: props.color,
           fontSize: 25,
+          fontFamily: "DB Heavent",
         }}
         value={props.value}
         maxLength={1}
@@ -46,8 +52,9 @@ export default (props) => {
         style={{
           flex: 1,
           color: props.color,
-          fontSize: 16,
+          fontSize: 24,
           padding: 5,
+          fontFamily: "DB Heavent",
         }}
         onChangeText={(text) => {
           props.onChangeText(text);

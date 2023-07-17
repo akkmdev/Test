@@ -39,7 +39,7 @@ const TouchIDScreen = ({ route, navigation }) => {
           <View style={{ marginBottom: (screenH * 3) / 100 }}>
             <StyledText
               text={"Touch ID"}
-              style={{ color: "#000", fontWeight: "bold" }}
+              style={{ color: "#000", }}
               type={"large"}
             />
           </View>

@@ -45,7 +45,7 @@ const OTPRequestScreen = ({ route, navigation }) => {
           <View style={{ marginBottom: (screenH * 2) / 100 }}>
             <StyledText
               text={"OTP จะถูกส่งไปที่เบอร์โทรศัพท์"}
-              style={{ color: activeColors.tint,fontWeight:'bold'}}
+              style={{ color: activeColors.tint}}
               type={"large"}
             />
           </View>
@@ -69,7 +69,7 @@ const OTPRequestScreen = ({ route, navigation }) => {
           </View>
           <StyledText
             text={"กรณีเบอร์โทรศัพท์ไม่ถูกต้องกรุณาติดต่อเบอร์ 02-XXX-XXXX"}
-            style={{ color: activeColors.sub, fontSize: 12 }}
+            style={{ color: activeColors.sub, fontSize: 16 }}
             type={"small"}
           />
         </View>

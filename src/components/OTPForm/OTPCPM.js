@@ -13,6 +13,7 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   Keyboard,
+  Platform,
 } from "react-native";
 import StyledTextInput from "../InputCPN/StyledTextInput";
 import StyledText from "../TextCPN/StyledText";
@@ -70,7 +71,8 @@ const OTPCPN = (props) => {
           }}
         >
           <StyledTextInput
-            style={{ width: (screenW * 10) / 100, height: (screenH * 5) / 100 }}
+            style={{
+            }}
             color={activeColors.tint}
             value={pin1}
             maxLength={1}
@@ -82,7 +84,7 @@ const OTPCPN = (props) => {
           />
 
           <StyledTextInput
-            style={{ width: (screenW * 10) / 100, height: (screenH * 5) / 100 }}
+            style={{}}
             color={activeColors.tint}
             value={pin2}
             maxLength={1}
@@ -94,7 +96,7 @@ const OTPCPN = (props) => {
           />
 
           <StyledTextInput
-            style={{ width: (screenW * 10) / 100, height: (screenH * 5) / 100 }}
+            style={{}}
             color={activeColors.tint}
             value={pin3}
             maxLength={1}
@@ -107,7 +109,7 @@ const OTPCPN = (props) => {
           />
 
           <StyledTextInput
-            style={{ width: (screenW * 10) / 100, height: (screenH * 5) / 100 }}
+            style={{}}
             color={activeColors.tint}
             value={pin4}
             maxLength={1}
@@ -119,7 +121,7 @@ const OTPCPN = (props) => {
           />
 
           <StyledTextInput
-            style={{ width: (screenW * 10) / 100, height: (screenH * 5) / 100 }}
+            style={{}}
             color={activeColors.tint}
             value={pin5}
             maxLength={1}
@@ -131,7 +133,7 @@ const OTPCPN = (props) => {
           />
 
           <StyledTextInput
-            style={{ width: (screenW * 10) / 100, height: (screenH * 5) / 100 }}
+            style={{}}
             color={activeColors.tint}
             value={pin6}
             maxLength={1}
@@ -167,7 +169,7 @@ const OTPCPN = (props) => {
                       : Math.floor(counter % 60) + " ") +
                     ")"
                   }
-                  style={{ color: activeColors.tint, fontWeight: "bold" }}
+                  style={{ color: activeColors.tint }}
                   type={"mediam"}
                 />
               </TouchableOpacity>
@@ -182,7 +184,7 @@ const OTPCPN = (props) => {
                   : Math.floor(counter % 60) + " ") +
                 ")"
               }
-              style={{ color: activeColors.tint, fontWeight: "bold" }}
+              style={{ color: activeColors.tint }}
               type={"mediam"}
             />
           )}

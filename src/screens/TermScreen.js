@@ -12,6 +12,7 @@ import {
   Platform,
   useColorScheme,
   Switch,
+  StatusBar,
 } from "react-native";
 
 import { colors } from "../config/theme";
@@ -28,17 +29,34 @@ const screenH = Dimensions.get("screen").height;
 
 const TermScreen = ({ route, navigation }) => {
   const insets = useSafeAreaInsets();
-  const statusBarHeight = insets.bottom;
+  const statusBarHeight = insets.top;
   const { theme, updateTheme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
+  console.log("statusBarHeight: ", StatusBar.currentHeight);
+  console.log("screenH", screenH);
+  let androidStatusBarH = StatusBar.currentHeight;
   return (
-    <View style={[styles.cssSafeAreaView, { backgroundColor: activeColors.primary }]}>
+    <View
+      style={[
+        styles.cssSafeAreaView,
+        {
+          height:
+            Platform.OS == "android"
+              ? ((screenH - androidStatusBarH) * 100) / 100
+              : screenH,
+          backgroundColor: activeColors.primary,
+        },
+      ]}
+    >
       <Components_Topbar navigation={navigation} />
-      <View style={{ flex: 1, justifyContent: "flex-end"}}>
+      <View style={{ flex: 1, justifyContent: "flex-end" }}>
         <View
           style={{
             width: screenW,
-            height: (screenH * 70) / 100,
+            height:
+              Platform.OS == "android"
+                ? ((screenH + androidStatusBarH) * 70) / 100
+                : (screenH * 70) / 100,
             backgroundColor: activeColors.tertiary,
             borderTopRightRadius: 20,
             borderTopLeftRadius: 20,
@@ -50,7 +68,7 @@ const TermScreen = ({ route, navigation }) => {
             shadowOpacity: 0.3,
             shadowRadius: 2.0,
             elevation: 5,
-            paddingBottom:statusBarHeight
+            paddingBottom: Platform.OS == "android"? androidStatusBarH: statusBarHeight,
           }}
         >
           <View style={styles.cssContaniner}>
@@ -72,7 +90,7 @@ const TermScreen = ({ route, navigation }) => {
               <View
                 style={{
                   borderBottomWidth: 1,
-                  borderColor:activeColors.lightsub,
+                  borderColor: activeColors.lightsub,
                   marginTop: (screenH * 3) / 100,
                 }}
               ></View>
@@ -89,12 +107,12 @@ const TermScreen = ({ route, navigation }) => {
                   navigation={navigation}
                   route={route}
                   text={"ปฏิเสธ"}
-                  style={{ flex: 1, marginRight: (screenW * 2) / 100}}
+                  style={{ flex: 1, marginRight: (screenW * 2) / 100 }}
                   type={"border"}
                 />
                 <StyledBTN
                   onPress={() => {
-                      navigation.navigate("LoginScreen", route);
+                    navigation.navigate("LoginScreen", route);
                   }}
                   navigation={navigation}
                   route={route}
@@ -112,7 +130,6 @@ const TermScreen = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   cssSafeAreaView: {
     width: screenW,
-    height: screenH,
   },
   cssContaniner: {
     flex: 1,
