@@ -1,8 +1,7 @@
 import React from 'react';
-// import {createStackNavigator} from '@react-navigation/stack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// import SplashScreen from '../screens/SplashScreen';
+import SplashScreen from '../screens/SplashScreen';
 import SelectlanguageScreen from '../screens/SelectlanguageScreen';
 import TermScreen from '../screens/TermScreen';
 import LoginScreen from '../screens/LoginScreen';
@@ -16,14 +15,14 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <>
-      <Stack.Navigator initialRouteName="SelectlanguageScreen">
-        {/* <Stack.Screen
+      <Stack.Navigator >
+        <Stack.Screen
           name="SplashScreen"
           component={SplashScreen}
           options={{
             headerShown: false,
           }}
-        /> */}
+        />
         <Stack.Screen
           name="SelectlanguageScreen"
           component={SelectlanguageScreen}

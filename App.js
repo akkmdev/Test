@@ -10,7 +10,7 @@ import {
 
 import { NavigationContainer } from "@react-navigation/native";
 import MainStack from "./src/stacks/MainStack";
-import SplashScreen from "react-native-splash-screen";
+// import SplashScreen from "react-native-splash-screen";
 
 import { ThemeContext } from "./src/contexts/ThemeContext";
 import { storeData, getData } from "./src/config/asyncStorage";
@@ -24,21 +24,15 @@ const App = () => {
   const updateTheme = (newTheme) => {
     let mode;
     if (!newTheme) {
+      console.log("!newTheme", newTheme);
       mode = theme.mode === "dark" ? "light" : "dark";
       newTheme = { mode };
       setTheme(newTheme);
       storeData("Theme", newTheme);
     } else {
-      if (newTheme == false) {
-        setTheme({ mode: "light" });
-        storeData("Theme", { mode: "light" });
-      } else if (newTheme == true) {
-        setTheme({ mode: "dark" });
-        storeData("Theme", { mode: "dark" });
-      } else {
-        setTheme(newTheme);
-        storeData("Theme", newTheme);
-      }
+      console.log("newTheme", newTheme);
+      setTheme(newTheme);
+      storeData("Theme", newTheme);
     }
   };
 
@@ -57,7 +51,7 @@ const App = () => {
 
   useEffect(() => {
     fetchStoredTheme();
-    SplashScreen.hide();
+    // SplashScreen.hide();
   }, []);
 
   return (

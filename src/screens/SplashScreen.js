@@ -1,32 +1,33 @@
-import React from 'react';
-import {useState} from 'react';
-import {
-  View,
-  StyleSheet,
-} from 'react-native';
+import React, { useState, useEffect } from "react";
+import { View } from "react-native";
+import { colors } from "../config/theme";
+import { useContext } from "react";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 const SplashScreen = ({ navigation }) => {
-    const [timePassed, setTimePassed] = useState(false);
+  const { theme, updateTheme } = useContext(ThemeContext);
+  let activeColors = colors[theme.mode];
+  const [nav, setNav] = useState(false);
+  setTimeout(() => {
+    setNav(true);
+  }, 3000);
 
-    setTimeout(function () {
-      setTimePassed(true);
-    }, 5000);
-  
-    if (!timePassed) {
-      return (
-        <View style={styles.cssContaniner}>
-        </View>
-      );
+  useEffect(() => {
+    if (nav == true) {
+      navigation.reset({
+        index: 0,
+        routes: [
+          {
+            name: "SelectlanguageScreen",
+          },
+        ],
+      });
     }
-    navigation.navigate('SelectlanguageScreen');
-    return null;
+  }, [nav]);
+
+  return (
+    <View style={{ flex: 1, backgroundColor: activeColors.secondary }}></View>
+  );
 };
 
 export default SplashScreen;
-
-const styles = StyleSheet.create({
-  cssContaniner: {
-    flex: 1,
-    backgroundColor: 'green',
-  },
-});

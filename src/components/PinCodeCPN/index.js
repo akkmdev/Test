@@ -101,7 +101,7 @@ export default (props) => {
                       text={number}
                       onPress={() => {
                         number == 4
-                          ? props.ChangeTheme()
+                          ? props.setThemeAccive(val=>!val)
                           : number == 5
                           ? addPin(number.toString())
                           : null;

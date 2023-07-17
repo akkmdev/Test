@@ -15,15 +15,19 @@ const PinScreen = ({ route, navigation }) => {
   const [getState, setState] = useState(0);
   const { theme, updateTheme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
-  const [themeAccive, setThemeAccive] = useState(false);
-
-  const ChangeTheme = () => {
-    setThemeAccive((pstate) => !pstate);
-    console.log("UpdateTheme", themeAccive);
-  };
+  const [themeAccive, setThemeAccive] = useState("UNABLE");
 
   useEffect(() => {
-    updateTheme(themeAccive);
+    console.log("themeAccive",themeAccive);
+    if (themeAccive == true) {
+      updateTheme({ mode: "dark" });
+      console.log("DARK",themeAccive);
+    } else if (themeAccive == false) {
+      updateTheme({ mode: "light" });
+      console.log("LIGHT",themeAccive);
+    } else {
+      console.log("ElsePIN");
+    }
   }, [themeAccive]);
 
   useEffect(() => {
@@ -40,7 +44,7 @@ const PinScreen = ({ route, navigation }) => {
       }}
     >
       <PinCodeCPN
-        ChangeTheme={ChangeTheme}
+        setThemeAccive={setThemeAccive}
         signupvalue={route.params.signupvalue}
         getState={getState}
         pin={getState === 0 ? pin : confirmPin}
