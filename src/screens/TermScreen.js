@@ -51,7 +51,7 @@ const TermScreen = ({ route, navigation }) => {
                   : (screenH * 70) / 100,
               backgroundColor: activeColors.tertiary,
               paddingBottom:
-                Platform.OS == "android" ? androidStatusBarH : statusBarHeight,
+                Platform.OS == "android" ? ((screenH+ androidStatusBarH)*10)/100 : statusBarHeight,
             },
           ]}
         >

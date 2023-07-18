@@ -27,6 +27,7 @@ function App() {
           name="SelectlanguageScreen"
           component={SelectlanguageScreen}
           options={{
+            gestureEnabled: false,
             headerShown: false,
           }}
         />

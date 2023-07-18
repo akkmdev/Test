@@ -1,32 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { View } from "react-native";
+import React from "react";
+import { View, Image } from "react-native";
 import { colors } from "../config/theme";
 import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 
 const SplashScreen = ({ navigation }) => {
-  const { theme, updateTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   let activeColors = colors[theme.mode];
-  const [nav, setNav] = useState(false);
   setTimeout(() => {
-    setNav(true);
+    navigation.navigate("SelectlanguageScreen");
   }, 3000);
 
-  useEffect(() => {
-    if (nav == true) {
-      navigation.reset({
-        index: 0,
-        routes: [
-          {
-            name: "SelectlanguageScreen",
-          },
-        ],
-      });
-    }
-  }, [nav]);
-
   return (
-    <View style={{ flex: 1, backgroundColor: activeColors.secondary }}></View>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor:
+          theme.mode == "dark" ? activeColors.primary : activeColors.secondary,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {theme.mode == "dark" ? (
+        <Image
+          style={{ width: 400, height: 400 }}
+          source={require("../../assets/image/iconapp.png")}
+        />
+      ) : (
+        <></>
+      )}
+    </View>
   );
 };
 
